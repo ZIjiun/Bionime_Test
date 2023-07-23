@@ -1,6 +1,6 @@
 package com.kent.controller;
 
-import com.kent.controller.utils.R;
+import com.kent.controller.utils.ReturnFormat;
 import com.kent.domain.MedicalAidStation;
 import com.kent.service.MedicalAidStationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +17,8 @@ public class MedicalAidStationController {
      * @return
      */
     @GetMapping
-    public R getAll() {
-        return new R(true, medicalAidStationService.getAll());
+    public ReturnFormat getAll() {
+        return new ReturnFormat(true, medicalAidStationService.getAll());
     }
 
     /**
@@ -27,9 +27,9 @@ public class MedicalAidStationController {
      * @return
      */
     @PostMapping
-    public R add(@RequestBody MedicalAidStation medicalAidStation){
+    public ReturnFormat add(@RequestBody MedicalAidStation medicalAidStation){
         boolean flag = medicalAidStationService.add(medicalAidStation);
-        return new R(flag, flag? "新增成功!":"新增失敗!");
+        return new ReturnFormat(flag, flag? "新增成功!":"新增失敗!");
     }
 
     /**
@@ -38,9 +38,9 @@ public class MedicalAidStationController {
      * @return
      */
     @PutMapping
-    public R update(@RequestBody MedicalAidStation medicalAidStation) {
+    public ReturnFormat update(@RequestBody MedicalAidStation medicalAidStation) {
         Boolean flag = medicalAidStationService.update(medicalAidStation);
-        return new R(flag, flag? "更新成功":"更新失敗");
+        return new ReturnFormat(flag, flag? "更新成功":"更新失敗");
     }
 
     /**
@@ -49,9 +49,9 @@ public class MedicalAidStationController {
      * @return
      */
     @DeleteMapping("{id}")
-    public R delete(@PathVariable Integer id) {
+    public ReturnFormat delete(@PathVariable Integer id) {
         Boolean flag = medicalAidStationService.deleteById(id);
-        return new R(flag, flag? "刪除成功": "刪除失敗");
+        return new ReturnFormat(flag, flag? "刪除成功": "刪除失敗");
     }
 
     /**
@@ -60,7 +60,7 @@ public class MedicalAidStationController {
      * @return
      */
     @GetMapping("{id}")
-    public R getById(@PathVariable Integer id) {
-        return new R(true, medicalAidStationService.getById(id));
+    public ReturnFormat getById(@PathVariable Integer id) {
+        return new ReturnFormat(true, medicalAidStationService.getById(id));
     }
 }

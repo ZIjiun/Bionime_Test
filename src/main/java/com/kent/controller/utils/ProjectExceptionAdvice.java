@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class ProjectExceptionAdvice {
     @ExceptionHandler(Exception.class)
-    public R doException(Exception ex){
+    public ReturnFormat doException(Exception ex){
         ex.printStackTrace();
-        return new R("伺服器故障，請稍後再試");
+        return new ReturnFormat("伺服器故障，請稍後再試");
     }
 }
 

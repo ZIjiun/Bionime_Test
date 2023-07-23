@@ -1,6 +1,6 @@
 package com.kent.controller;
 
-import com.kent.controller.utils.R;
+import com.kent.controller.utils.ReturnFormat;
 import com.kent.domain.Nurse;
 import com.kent.service.NurseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +17,8 @@ public class NurseController {
      * @return
      */
     @GetMapping
-    public R getAll() {
-        return new R(true, nurseService.getAll());
+    public ReturnFormat getAll() {
+        return new ReturnFormat(true, nurseService.getAll());
     }
 
     /**
@@ -27,11 +27,11 @@ public class NurseController {
      * @return
      */
     @PostMapping
-    public R add(@RequestBody Nurse nurse){
+    public ReturnFormat add(@RequestBody Nurse nurse){
         System.out.println(nurse);
         boolean flag = nurseService.add(nurse);
         System.out.println(flag);
-        return new R(flag, flag? "新增成功!":"新增失敗!");
+        return new ReturnFormat(flag, flag? "新增成功!":"新增失敗!");
     }
 
     /**
@@ -40,9 +40,9 @@ public class NurseController {
      * @return
      */
     @PutMapping
-    public R update(@RequestBody Nurse nurse) {
+    public ReturnFormat update(@RequestBody Nurse nurse) {
         Boolean flag = nurseService.update(nurse);
-        return new R(flag, flag? "更新成功":"更新失敗");
+        return new ReturnFormat(flag, flag? "更新成功":"更新失敗");
     }
 
     /**
@@ -51,9 +51,9 @@ public class NurseController {
      * @return
      */
     @DeleteMapping("{id}")
-    public R delete(@PathVariable Integer id) {
+    public ReturnFormat delete(@PathVariable Integer id) {
         Boolean flag = nurseService.deleteById(id);
-        return new R(flag, flag? "刪除成功": "刪除失敗");
+        return new ReturnFormat(flag, flag? "刪除成功": "刪除失敗");
     }
 
     /**
@@ -62,7 +62,7 @@ public class NurseController {
      * @return
      */
     @GetMapping("{id}")
-    public R getById(@PathVariable Integer id) {
-        return new R(true, nurseService.getById(id));
+    public ReturnFormat getById(@PathVariable Integer id) {
+        return new ReturnFormat(true, nurseService.getById(id));
     }
 }
