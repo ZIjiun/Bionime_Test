@@ -21,10 +21,7 @@ public class MedicalAidStationServiceImpl implements MedicalAidStationService {
      */
     @Override
     public Boolean add(MedicalAidStation addItem) {
-        MedicalAidStation medicalAidStation = new MedicalAidStation();
-
-        medicalAidStation.setStationName(addItem.getStationName());
-        MedicalAidStation savedStation = medicalAidStationDao.save(medicalAidStation);
+        MedicalAidStation savedStation = medicalAidStationDao.save(addItem);
         return savedStation.getId() > 0;
     }
 
@@ -48,9 +45,7 @@ public class MedicalAidStationServiceImpl implements MedicalAidStationService {
     public Boolean update(MedicalAidStation updateItem) {
         Optional<MedicalAidStation> result = medicalAidStationDao.findById(updateItem.getId());
         if(result.isPresent()) {
-            MedicalAidStation medicalAidStation = result.get();
-            medicalAidStation.setStationName(updateItem.getStationName());
-            MedicalAidStation savedStation = medicalAidStationDao.save(medicalAidStation);
+            MedicalAidStation savedStation = medicalAidStationDao.save(updateItem);
             return savedStation.getId() > 0;
         } else {
             return false;

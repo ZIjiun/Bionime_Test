@@ -49,12 +49,10 @@ class MedicalAidStationServiceTestCase {
      */
     @Test
     void testUpdate() {
-        MedicalAidStation result = medicalAidStationService.getById(9);
+        MedicalAidStation result = medicalAidStationService.getById(10);
         if (result != null) {
-            MedicalAidStation medicalAidStation = new MedicalAidStation();
-            medicalAidStation.setId(7);
-            medicalAidStation.setStationName("1232");
-            System.out.println(medicalAidStationService.update(medicalAidStation));
+            result.setStationName("1232");
+            System.out.println(medicalAidStationService.update(result));
         } else {
             System.out.println(false);
         }
