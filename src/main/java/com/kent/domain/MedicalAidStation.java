@@ -15,7 +15,7 @@ public class MedicalAidStation{
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "station_name", nullable = false, length = 10)
+    @Column(name = "station_name", nullable = false, length = 50)
     private String stationName;
 
     @Column(name = "modification_time", columnDefinition = "TIMESTAMP")
