@@ -22,7 +22,7 @@ class NurseTestCase {
      */
     @Test
     void testSave() {
-        MedicalAidStation existingStation = medicalAidStationDao.findById("1").orElse(null);
+        MedicalAidStation existingStation = medicalAidStationDao.findById(1).orElse(null);
 
         if (existingStation != null) {
             Nurse nurse = new Nurse();
@@ -38,7 +38,7 @@ class NurseTestCase {
      */
     @Test
     void testupdate() {
-        Optional<Nurse> optionalNurse = nurseDao.findById("3");
+        Optional<Nurse> optionalNurse = nurseDao.findById(3);
         // 如果已經存在，則進行更新
         if (optionalNurse.isPresent()) {
             Nurse nurse = optionalNurse.get();
@@ -54,7 +54,7 @@ class NurseTestCase {
      */
     @Test
     void testDeleteById() {
-        nurseDao.deleteById("1");
+        nurseDao.deleteById(1);
     }
 
     /**
@@ -70,6 +70,6 @@ class NurseTestCase {
      */
     @Test
     void testSelectById() {
-        System.out.println(medicalAidStationDao.findById("1"));
+        System.out.println(medicalAidStationDao.findById(1));
     }
 }

@@ -28,7 +28,7 @@ class MedicalAidStationTestCase {
      */
     @Test
     void testupdate() {
-        Optional<MedicalAidStation> optionalStation = medicalAidStationDao.findById("2");
+        Optional<MedicalAidStation> optionalStation = medicalAidStationDao.findById(2);
         // 如果已經存在，則進行更新
         if (optionalStation.isPresent()) {
             MedicalAidStation medicalAidStation = optionalStation.get();
@@ -45,7 +45,7 @@ class MedicalAidStationTestCase {
      */
     @Test
     void testDeleteById() {
-        medicalAidStationDao.deleteById("1");
+        medicalAidStationDao.deleteById(1);
     }
 
     /**
@@ -61,6 +61,6 @@ class MedicalAidStationTestCase {
      */
     @Test
     void testSelectById() {
-        System.out.println(medicalAidStationDao.findById("1"));
+        System.out.println(medicalAidStationDao.findById(1));
     }
 }
